@@ -60,6 +60,7 @@ export function Preloader() {
           alt=""
           fill
           priority
+          sizes="280px"
           className="object-contain opacity-30 grayscale"
         />
 
@@ -69,6 +70,7 @@ export function Preloader() {
           alt="Netronic Fun"
           fill
           priority
+          sizes="280px"
           className="animate-preloader-reveal object-contain"
         />
 

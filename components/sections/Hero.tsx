@@ -8,6 +8,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { Eyebrow } from "@/components/sections/hero/Eyebrow";
 
 const INSTAGRAM_URL = "https://www.instagram.com/lasertagnetronicfun";
 const WHATSAPP_URL = "https://wa.me/491778522174";
@@ -48,20 +49,7 @@ export function Hero({ locale }: { locale: Locale }) {
 
         {/* Центр */}
         <div className="flex flex-col items-center gap-40 text-center lg:items-start lg:gap-56 lg:text-left">
-          <div className="flex flex-wrap items-center justify-center gap-16 text-caption uppercase text-primary lg:justify-start">
-            <span>{t.hero.eyebrowBrand}</span>
-            <span aria-hidden="true">•</span>
-            <span>{t.hero.eyebrowCity}</span>
-            <span aria-hidden="true">•</span>
-            <img
-              src="/icons/germany-flag.svg"
-              alt=""
-              width={24}
-              height={16}
-              className="h-16 w-24"
-            />
-            <span>{t.hero.eyebrowCountry}</span>
-          </div>
+          <Eyebrow locale={locale} />
 
           <div className="flex flex-col items-center gap-24 lg:items-start">
             <h1
