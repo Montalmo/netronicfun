@@ -42,22 +42,22 @@ export function HeroSlider({ locale }: { locale: Locale }) {
       ))}
 
       <div className="absolute bottom-40 left-1/2 -translate-x-1/2">
-        <div className="flex items-center gap-16 rounded-full bg-on-dark/40 px-24 py-16 backdrop-blur-md">
-          {SLIDES.map((slide, index) => (
-            <button
-              key={slide}
-              type="button"
-              aria-label={`${t.hero.slideLabel} ${index + 1}`}
-              onClick={() => setActive(index)}
-              className={`cursor-pointer rounded-full transition-all duration-300 ${
-                index === active
-                  ? "h-16 w-16 bg-primary"
-                  : "h-12 w-12 bg-on-dark hover:bg-on-dark/70"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
+  <div className="flex h-24 items-center gap-8 rounded-full bg-on-dark/40 px-16 backdrop-blur-md">
+    {SLIDES.map((slide, index) => (
+      <button
+        key={slide}
+        type="button"
+        aria-label={`${t.hero.slideLabel} ${index + 1}`}
+        onClick={() => setActive(index)}
+        className={`h-8 w-8 cursor-pointer rounded-full transition-colors duration-300 ${
+          index === active
+            ? "bg-primary"
+            : "bg-on-dark hover:bg-on-dark/70"
+        }`}
+      />
+    ))}
+  </div>
+</div>
     </div>
   );
 }

@@ -40,34 +40,51 @@ export function Hero({ locale }: { locale: Locale }) {
           <LanguageToggle locale={locale} />
         </div>
 
-        <div className="flex flex-col items-start gap-40">
-          <div className="flex flex-col gap-24">
-            {/* ← нове: клас анімації вмикається лише після revealed */}
-            <h1
-              className={`text-h1 ${revealed ? "animate-fade-up" : "opacity-0"}`}
-              style={{ animationDelay: "100ms" }}
-            >
-              {t.hero.titleLine1}
-              <br />
-              {t.hero.titleLine2}
-            </h1>
-            <p
-              className={`text-title-l text-secondary ${revealed ? "animate-fade-up" : "opacity-0"}`}
-              style={{ animationDelay: "250ms" }}
-            >
-              {t.hero.subtitle}
-            </p>
-          </div>
+<div className="flex flex-col items-start gap-56">
+  {/* Eyebrow-рядок */}
+  <div className="flex items-center gap-16 text-caption uppercase text-primary">
+    <span>{t.hero.eyebrowBrand}</span>
+    <span aria-hidden="true">•</span>
+    <span>{t.hero.eyebrowCity}</span>
+    <span aria-hidden="true">•</span>
+    <img
+      src="/icons/germany-flag.svg"
+      alt=""
+      width={24}
+      height={16}
+      className="h-16 w-24"
+    />
+    <span>{t.hero.eyebrowCountry}</span>
+  </div>
 
-          <div className="flex items-center gap-16">
-            <Button variant="ghost" icon="download" href={CATALOG_URL}>
-              {t.hero.catalog}
-            </Button>
-            <Button variant="primary" icon="whatsapp" href={WHATSAPP_URL}>
-              {t.hero.beratung}
-            </Button>
-          </div>
-        </div>
+  {/* Заголовок + підзаголовок (24px) */}
+  <div className="flex flex-col items-start gap-24">
+    <h1
+      className={`text-h1 ${revealed ? "animate-fade-up" : "opacity-0"}`}
+      style={{ animationDelay: "100ms" }}
+    >
+      {t.hero.titleLine1}
+      <br />
+      {t.hero.titleLine2}
+    </h1>
+    <p
+      className={`text-title-l text-secondary ${revealed ? "animate-fade-up" : "opacity-0"}`}
+      style={{ animationDelay: "250ms" }}
+    >
+      {t.hero.subtitle}
+    </p>
+  </div>
+
+  {/* CTA-кнопки */}
+  <div className="flex items-center gap-16">
+    <Button variant="ghost" icon="download" href={CATALOG_URL}>
+      {t.hero.catalog}
+    </Button>
+    <Button variant="primary" icon="whatsapp" href={WHATSAPP_URL}>
+      {t.hero.beratung}
+    </Button>
+  </div>
+</div>
 
         <div className="flex items-center gap-16">
           <IconButton icon="instagram" label="Instagram" href={INSTAGRAM_URL} />

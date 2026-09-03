@@ -22,6 +22,9 @@ const de = {
     switch: "Sprache wechseln",
   },
   hero: {
+    eyebrowBrand: "Lasertag Netronic Fun",
+    eyebrowCity: "Magdeburg",
+    eyebrowCountry: "Deutschland",
     titleLine1: "LASERTAG-BUSINESS.",
     titleLine2: "SCHLÜSSELFERTIG.",
     subtitle:
@@ -56,6 +59,9 @@ const en: typeof de = {
     switch: "Switch language",
   },
   hero: {
+    eyebrowBrand: "Lasertag Netronic Fun",
+    eyebrowCity: "Magdeburg",
+    eyebrowCountry: "Germany",
     titleLine1: "LASERTAG BUSINESS.",
     titleLine2: "TURNKEY.",
     subtitle:

@@ -155,7 +155,13 @@
   --text-subtitle--line-height: 1.5;
   --text-subtitle--font-weight: 400;
 
-    /* Пункти сайд-меню */
+  /* Eyebrow-рядок (12px) */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 400;
+  --text-caption--letter-spacing: 0.06em;
+
+  /* Пункти сайд-меню */
   --text-menu: 3rem;
   --text-menu--line-height: 1.2;
   --text-menu--font-weight: 400;
