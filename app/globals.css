@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Прив'язуємо Gilroy до font-sans */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-gillroy);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* ===== SPACING SYSTEM =====
+     1 юніт = 1px. Тепер номер утиліти = значенню в px з макету.
+     Gaps за дизайн-системою (кратні 2, від 2 до 160):
+     gap-2 gap-4 gap-6 gap-8 gap-10 gap-12 gap-14 gap-16 gap-18 gap-20
+     gap-24 gap-32 gap-40 gap-48 gap-56 gap-64 gap-72 gap-80 gap-96
+     gap-104 gap-112 gap-120 gap-128 gap-136 gap-144 gap-152 gap-160
+     (непарні технічно можливі, але поза DS — не використовуємо) */
+  --spacing: 1px;
+
+  /* ===== TYPOGRAPHY TOKENS ===== */
+  
+  --text-h1: 3.5rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--font-weight: 500;
+
+  --text-h2: 3rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--font-weight: 500;
+
+  --text-h3: 2.5rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 500;
+
+  --text-h4: 2rem;
+  --text-h4--line-height: 1.25;
+  --text-h4--font-weight: 500;
+
+  --text-h5: 1.5rem;
+  --text-h5--line-height: 1.3;
+  --text-h5--font-weight: 500;
+
+  --text-title-l: 1.375rem;
+  --text-title-l--line-height: 1.4;
+  --text-title-l--font-weight: 400;
+
+  --text-title-m: 1.25rem;
+  --text-title-m--line-height: 1.4;
+  --text-title-m--font-weight: 400;
+
+  --text-body-l: 1.125rem;
+  --text-body-l--line-height: 1.6;
+  --text-body-l--font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  --text-subtitle: 0.875rem;
+  --text-subtitle--line-height: 1.5;
+  --text-subtitle--font-weight: 400;
+
+    /* Пункти сайд-меню */
+  --text-menu: 3rem;
+  --text-menu--line-height: 1.2;
+  --text-menu--font-weight: 400;
+
+  /* ===== COLOR TOKENS (Design System) ===== */
+
+  /* Поверхні */
+  --color-surface: #F5F5F7;        /* bg-primary (світла) — hex під питанням, див. нотатку ↓ */
+  --color-surface-dark: #202020;   /* темні секції (onDark-контекст) */
+
+  /* Текст / іконки */
+  --color-primary: #202020;        /* text-primary, icon-primary */
+  --color-secondary: #606060;      /* text-secondary, text-secondary-onDark */
+  --color-on-dark: #FFFFFF;        /* text-primary-onDark */
+  --color-on-dark-soft: #E4E4E4;   /* icon-primary-onDark */
+
+  /* Кнопки */
+  --color-btn-hover: #454545;      /* button-primary-hover */
+  --color-ghost: #E4E4E4;          /* button-ghost */
+  --color-ghost-hover: #E0E0E0;    /* button-ghost-hover */
+
+  /* Бордери */
+  --color-line: #E4E4E4;           /* border-primary */
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-surface text-primary antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .icon-download {
+    -webkit-mask-image: url("/icons/download-icon.svg");
+    mask-image: url("/icons/download-icon.svg");
+  }
+  .icon-x {
+    -webkit-mask-image: url("/icons/x-icon.svg");
+    mask-image: url("/icons/x-icon.svg");
+  }
+  .icon-instagram {
+    -webkit-mask-image: url("/icons/instagram-icon.svg");
+    mask-image: url("/icons/instagram-icon.svg");
+  }
+  .icon-menu {
+    -webkit-mask-image: url("/icons/menu-icon.svg");
+    mask-image: url("/icons/menu-icon.svg");
+  }
+  .icon-whatsapp {
+    -webkit-mask-image: url("/icons/whatsapp-icon.svg");
+    mask-image: url("/icons/whatsapp-icon.svg");
+  }
 }
