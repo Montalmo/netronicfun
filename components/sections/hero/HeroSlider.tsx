@@ -21,7 +21,7 @@ export function HeroSlider({ locale }: { locale: Locale }) {
   }, [active]);
 
   return (
-    <div className="relative h-[420px] md:h-[520px] lg:h-full">
+    <div className="relative h-420 md:h-520 lg:h-full">
       {/* <1024: горизонтальна стрічка зі scroll-snap; ≥1024: crossfade-стопка */}
       <div className="flex h-full snap-x snap-mandatory gap-16 overflow-x-auto px-16 sm:px-32 md:px-40 lg:block lg:snap-none lg:gap-0 lg:overflow-visible lg:px-0">
         {SLIDES.map((slide, index) => (

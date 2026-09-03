@@ -43,7 +43,7 @@
 
 @layer components {
   .preloader-logo {
-    @apply relative h-[280px] w-[280px];
+    @apply relative h-280 w-280;
   }
 
   .preloader-signature {
