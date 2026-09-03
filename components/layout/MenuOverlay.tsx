@@ -67,22 +67,22 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
       </nav>
 
       <div className="flex items-center justify-center gap-16 lg:justify-start">
-        <IconButton
-          icon="instagram"
-          label="Instagram"
-          variant="outline-dark"
-          href={INSTAGRAM_URL}
-        />
-        <IconButton
-          icon="whatsapp"
-          label="WhatsApp"
-          variant="outline-dark"
-          href={WHATSAPP_URL}
-        />
-        <span className="hidden text-subtitle text-on-dark-soft sm:block">
-          {t.hero.contact}
-        </span>
-      </div>
+  <IconButton
+    icon="instagram"
+    label="Instagram"
+    variant="outline-dark"
+    href={INSTAGRAM_URL}
+  />
+  <IconButton
+    icon="whatsapp"
+    label="WhatsApp"
+    variant="outline-dark"
+    href={WHATSAPP_URL}
+  />
+  <span className="hidden text-subtitle text-on-dark-soft sm:block">
+    {t.hero.contact}
+  </span>
+</div>
     </div>
   );
 }
