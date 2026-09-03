@@ -6,6 +6,104 @@
 }
 
 @theme {
+  /* Easing завіси прелоадера */
+  --ease-premium: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Прелоадер: проявлення кольорового лого за променем */
+  --animate-preloader-reveal: preloader-reveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
+  --animate-preloader-beam: preloader-beam 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
+  --animate-preloader-signature: preloader-signature 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
+
+  @keyframes preloader-reveal {
+    from { clip-path: inset(-20% 100% -20% 0); }
+    to   { clip-path: inset(-20% 0 -20% 0); }
+  }
+
+  @keyframes preloader-beam {
+    0%   { left: 0%; opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  @keyframes preloader-signature {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer components {
+  .preloader-logo {
+    @apply relative h-[280px] w-[280px];
+  }
+
+  .preloader-signature {
+    @apply mt-40 text-subtitle uppercase text-on-dark-soft;
+    letter-spacing: 0.4em;
+  }
+
+  .preloader-beam {
+  position: absolute;
+  top: -16px;
+  bottom: -16px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(255 255 255 / 0.95) 20%,
+    rgb(255 255 255 / 0.95) 80%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 5px rgb(255 255 255 / 0.3));
+}
+}
+
+@layer components {
+  .preloader-logo {
+    @apply text-h1 text-on-dark uppercase;
+    letter-spacing: 0.32em;
+  }
+
+  .preloader-beam {
+    position: absolute;
+    top: -16px;
+    bottom: -16px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #ffffff, transparent);
+    box-shadow: 0 0 16px 2px rgb(255 255 255 / 0.6);
+  }
+}
+
+@theme {
+
+    /* Поява контенту на головній */
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+    /* Поява пунктів сайд-меню */
+  --animate-menu-item: menu-item 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes menu-item {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* ===== SPACING SYSTEM =====
      1 юніт = 1px. Тепер номер утиліти = значенню в px з макету.
      Gaps за дизайн-системою (кратні 2, від 2 до 160):
@@ -124,3 +222,4 @@
     mask-image: url("/icons/whatsapp-icon.svg");
   }
 }
+

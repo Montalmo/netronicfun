@@ -51,12 +51,15 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
       </div>
 
       <nav className="flex flex-1 flex-col items-center justify-center gap-36">
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.map((item, index) => (
           <Link
             key={item.path}
             href={`/${locale}${item.path === "/" ? "" : item.path}`}
             onClick={onClose}
-            className="text-menu text-on-dark transition-colors hover:text-on-dark-soft"
+            style={open ? { animationDelay: `${120 + index * 70}ms` } : undefined}
+            className={`text-menu text-on-dark transition-colors hover:text-on-dark-soft ${
+              open ? "animate-menu-item" : "opacity-0"
+            }`}
           >
             {t.menu[item.key]}
           </Link>

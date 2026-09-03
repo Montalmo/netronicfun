@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { Preloader } from "@/components/ui/Preloader"; // ← новий імпорт
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import "../globals.css";
@@ -42,7 +43,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={gillroy.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Preloader /> {/* ← ось тут, першим елементом перед {children} */}
+        {children}
+      </body>
     </html>
   );
 }

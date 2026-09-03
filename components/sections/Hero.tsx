@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react"; // ← нове: додався useEffect
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
 import { HeroSlider } from "@/components/sections/hero/HeroSlider";
 import { Button } from "@/components/ui/Button";
@@ -15,7 +15,15 @@ const CATALOG_URL = "/downloads/netronic-katalog-2026.pdf";
 
 export function Hero({ locale }: { locale: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [revealed, setRevealed] = useState(false); // ← нове: стан "прелоадер завершився"
   const t = getDictionary(locale);
+
+  // ← нове: слухаємо подію від Preloader
+  useEffect(() => {
+    const onDone = () => setRevealed(true);
+    window.addEventListener("preloader:finish", onDone, { once: true });
+    return () => window.removeEventListener("preloader:finish", onDone);
+  }, []);
 
   return (
     <section className="relative flex h-dvh w-full">
@@ -34,12 +42,21 @@ export function Hero({ locale }: { locale: Locale }) {
 
         <div className="flex flex-col items-start gap-40">
           <div className="flex flex-col gap-24">
-            <h1 className="text-h1">
+            {/* ← нове: клас анімації вмикається лише після revealed */}
+            <h1
+              className={`text-h1 ${revealed ? "animate-fade-up" : "opacity-0"}`}
+              style={{ animationDelay: "100ms" }}
+            >
               {t.hero.titleLine1}
               <br />
               {t.hero.titleLine2}
             </h1>
-            <p className="text-title-l text-secondary">{t.hero.subtitle}</p>
+            <p
+              className={`text-title-l text-secondary ${revealed ? "animate-fade-up" : "opacity-0"}`}
+              style={{ animationDelay: "250ms" }}
+            >
+              {t.hero.subtitle}
+            </p>
           </div>
 
           <div className="flex items-center gap-16">
