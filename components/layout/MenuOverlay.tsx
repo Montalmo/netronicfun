@@ -33,7 +33,7 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
   return (
     <div
       aria-hidden={!open}
-      className={`fixed inset-0 z-50 flex flex-col bg-surface-dark px-160 py-80 transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex flex-col bg-surface-dark px-16 py-16 transition-opacity duration-500 sm:px-32 sm:py-32 md:px-40 md:py-40 lg:px-80 lg:py-80 3xl:px-160 ${
         open ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
@@ -50,14 +50,14 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
         <LanguageToggle locale={locale} variant="dark" />
       </div>
 
-      <nav className="flex flex-1 flex-col items-center justify-center gap-36">
+      <nav className="flex flex-1 flex-col items-center justify-center gap-24 md:gap-36">
         {NAV_ITEMS.map((item, index) => (
           <Link
             key={item.path}
             href={`/${locale}${item.path === "/" ? "" : item.path}`}
             onClick={onClose}
             style={open ? { animationDelay: `${120 + index * 70}ms` } : undefined}
-            className={`text-menu text-on-dark transition-colors hover:text-on-dark-soft ${
+            className={`text-h5 text-on-dark transition-colors hover:text-on-dark-soft md:text-menu ${
               open ? "animate-menu-item" : "opacity-0"
             }`}
           >
@@ -66,7 +66,7 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
         ))}
       </nav>
 
-      <div className="flex items-center gap-16">
+      <div className="flex items-center justify-center gap-16 lg:justify-start">
         <IconButton
           icon="instagram"
           label="Instagram"
@@ -79,7 +79,9 @@ export function MenuOverlay({ open, onClose, locale }: MenuOverlayProps) {
           variant="outline-dark"
           href={WHATSAPP_URL}
         />
-        <span className="text-subtitle text-on-dark-soft">{t.hero.contact}</span>
+        <span className="hidden text-subtitle text-on-dark-soft sm:block">
+          {t.hero.contact}
+        </span>
       </div>
     </div>
   );

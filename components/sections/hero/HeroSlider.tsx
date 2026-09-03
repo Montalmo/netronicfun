@@ -21,43 +21,47 @@ export function HeroSlider({ locale }: { locale: Locale }) {
   }, [active]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      {SLIDES.map((slide, index) => (
-        <div
-          key={slide}
-          aria-hidden={index !== active}
-          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-            index === active ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={`/images/hero/slide-${slide}.jpg`}
-            alt={t.hero.slideAlt}
-            fill
-            sizes="50vw"
-            priority={index === 0}
-            className="object-cover"
-          />
-        </div>
-      ))}
+    <div className="relative h-[420px] md:h-[520px] lg:h-full">
+      {/* <1024: горизонтальна стрічка зі scroll-snap; ≥1024: crossfade-стопка */}
+      <div className="flex h-full snap-x snap-mandatory gap-16 overflow-x-auto px-16 sm:px-32 md:px-40 lg:block lg:snap-none lg:gap-0 lg:overflow-visible lg:px-0">
+        {SLIDES.map((slide, index) => (
+          <div
+            key={slide}
+            aria-hidden={index !== active}
+            className={`relative h-full w-[85%] shrink-0 snap-center transition-opacity duration-700 ease-out sm:w-[70%] md:w-[60%] lg:absolute lg:inset-0 lg:w-full ${
+              index === active ? "lg:opacity-100" : "lg:opacity-0"
+            }`}
+          >
+            <Image
+              src={`/images/hero/slide-${slide}.jpg`}
+              alt={t.hero.slideAlt}
+              fill
+              sizes="(max-width: 1023px) 85vw, 50vw"
+              priority={index === 0}
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
 
-      <div className="absolute bottom-40 left-1/2 -translate-x-1/2">
-  <div className="flex h-24 items-center gap-8 rounded-full bg-on-dark/40 px-16 backdrop-blur-md">
-    {SLIDES.map((slide, index) => (
-      <button
-        key={slide}
-        type="button"
-        aria-label={`${t.hero.slideLabel} ${index + 1}`}
-        onClick={() => setActive(index)}
-        className={`h-8 w-8 cursor-pointer rounded-full transition-colors duration-300 ${
-          index === active
-            ? "bg-primary"
-            : "bg-on-dark hover:bg-on-dark/70"
-        }`}
-      />
-    ))}
-  </div>
-</div>
+      {/* Пагінація лише на десктопі */}
+      <div className="absolute bottom-80 left-1/2 hidden -translate-x-1/2 lg:block">
+        <div className="flex h-24 items-center gap-8 rounded-full bg-on-dark/40 px-16 backdrop-blur-md">
+          {SLIDES.map((slide, index) => (
+            <button
+              key={slide}
+              type="button"
+              aria-label={`${t.hero.slideLabel} ${index + 1}`}
+              onClick={() => setActive(index)}
+              className={`h-8 w-8 cursor-pointer rounded-full transition-colors duration-300 ${
+                index === active
+                  ? "bg-primary"
+                  : "bg-on-dark hover:bg-on-dark/70"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
