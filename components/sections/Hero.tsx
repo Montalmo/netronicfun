@@ -2,20 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
+import { Eyebrow } from "@/components/sections/hero/Eyebrow";
 import { HeroSlider } from "@/components/sections/hero/HeroSlider";
 import { Button } from "@/components/ui/Button";
 import { IconButton } from "@/components/ui/IconButton";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { Eyebrow } from "@/components/sections/hero/Eyebrow";
 
 const INSTAGRAM_URL = "https://www.instagram.com/lasertagnetronicfun";
 const WHATSAPP_URL = "https://wa.me/491778522174";
 const CATALOG_URL = "/downloads/netronic-katalog-2026.pdf";
-
-const SECTION_PADDING =
-  "px-16 py-16 sm:px-32 sm:py-32 md:px-40 md:py-40 lg:px-80 lg:py-80 3xl:px-160";
 
 export function Hero({ locale }: { locale: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,32 +27,30 @@ export function Hero({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative w-full lg:flex lg:h-dvh">
-      {/* Ліва колонка */}
-      <div
-        className={`flex flex-col gap-40 lg:h-full lg:w-1/2 lg:justify-between lg:gap-0 ${SECTION_PADDING}`}
-      >
-        {/* Топбар */}
-        <div className="flex items-center justify-between">
-  <div className="flex items-center gap-16">
-    <IconButton
-      icon="menu"
-      label={t.menu.open}
-      onClick={() => setMenuOpen(true)}
-    />
-    <span className="text-subtitle text-secondary">{t.menu.label}</span>
-  </div>
-
-  <div className="flex items-center gap-16">
-    <LanguageToggle locale={locale} />
-    <IconButton
-      icon="whatsapp"
-      label="WhatsApp"
-      variant="primary"
-      href={WHATSAPP_URL}
-      className="lg:hidden"
-    />
-  </div>
-</div>
+      <div className="flex flex-col gap-40 px-16 pb-16 pt-104 sm:px-32 sm:pb-32 sm:pt-136 md:px-40 md:pb-40 md:pt-152 lg:h-full lg:w-1/2 lg:justify-between lg:gap-0 lg:px-80 lg:pb-80 lg:pt-80 3xl:px-160">
+        {/* Хедер: фіксований з blur на <lg, статичний на lg+ */}
+        <header className="fixed inset-x-0 top-0 z-40 bg-surface/80 backdrop-blur-md lg:static lg:z-auto lg:bg-transparent lg:backdrop-blur-none">
+          <div className="flex items-center justify-between px-16 py-16 sm:px-32 sm:py-32 md:px-40 md:py-40 lg:p-0">
+            <div className="flex items-center gap-16">
+              <IconButton
+                icon="menu"
+                label={t.menu.open}
+                onClick={() => setMenuOpen(true)}
+              />
+              <span className="text-subtitle text-secondary">{t.menu.label}</span>
+            </div>
+            <div className="flex items-center gap-16">
+              <LanguageToggle locale={locale} />
+              <IconButton
+                icon="whatsapp"
+                label="WhatsApp"
+                variant="primary"
+                href={WHATSAPP_URL}
+                className="lg:hidden"
+              />
+            </div>
+          </div>
+        </header>
 
         {/* Центр */}
         <div className="flex flex-col items-center gap-40 text-center lg:items-start lg:gap-56 lg:text-left">
@@ -108,7 +103,9 @@ export function Hero({ locale }: { locale: Locale }) {
             <IconButton icon="instagram" label="Instagram" href={INSTAGRAM_URL} />
             <IconButton icon="whatsapp" label="WhatsApp" href={WHATSAPP_URL} />
           </div>
-          <span className="hidden text-subtitle text-secondary sm:block">{t.hero.contact}</span>
+          <span className="hidden text-subtitle text-secondary sm:block">
+            {t.hero.contact}
+          </span>
         </div>
       </div>
 
