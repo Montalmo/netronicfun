@@ -26,11 +26,34 @@ export function Hero({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("preloader:finish", onDone);
   }, []);
 
+  /* CTA-блок: на мобільних рендериться всередині InfoSlider,
+     на десктопі — після слайдера */
+  const ctaButtons = (
+    <div className="flex w-full flex-col items-stretch gap-16 sm:w-auto sm:flex-row sm:items-center">
+      <Button
+        variant="ghost"
+        icon="download"
+        href={CATALOG_URL}
+        className="w-full justify-center sm:w-auto"
+      >
+        {t.hero.catalog}
+      </Button>
+      <Button
+        variant="primary"
+        icon="whatsapp"
+        href={WHATSAPP_URL}
+        className="w-full justify-center sm:w-auto"
+      >
+        {t.hero.beratung}
+      </Button>
+    </div>
+  );
+
   return (
     <section className="relative w-full lg:flex lg:h-dvh">
       {/* Ліва колонка */}
       <div className="flex flex-col gap-40 px-16 pb-16 pt-104 sm:px-32 sm:pb-32 sm:pt-136 md:px-40 md:pb-40 md:pt-152 lg:h-full lg:w-1/2 lg:justify-between lg:gap-0 lg:px-80 lg:pb-80 lg:pt-80 3xl:px-160">
-        {/* Хедер: фіксований з blur на <lg, статичний на lg+ */}
+        {/* Хедер */}
         <header className="fixed inset-x-0 top-0 z-40 bg-surface/80 backdrop-blur-md lg:static lg:z-auto lg:bg-transparent lg:backdrop-blur-none">
           <div className="flex items-center justify-between px-16 py-16 sm:px-32 sm:py-32 md:px-40 md:py-40 lg:p-0">
             <div className="flex items-center gap-16">
@@ -54,30 +77,14 @@ export function Hero({ locale }: { locale: Locale }) {
           </div>
         </header>
 
-        {/* Центр: eyebrow + інфо-слайдер + CTA */}
+        {/* Центр */}
         <div className="flex flex-col items-center gap-40 text-center lg:items-start lg:gap-56 lg:text-left">
           <Eyebrow locale={locale} />
 
-          <InfoSlider locale={locale} revealed={revealed} />
+          <InfoSlider locale={locale} revealed={revealed} cta={ctaButtons} />
 
-          <div className="flex w-full flex-col items-stretch gap-16 sm:w-auto sm:flex-row sm:items-center">
-            <Button
-              variant="ghost"
-              icon="download"
-              href={CATALOG_URL}
-              className="w-full justify-center sm:w-auto"
-            >
-              {t.hero.catalog}
-            </Button>
-            <Button
-              variant="primary"
-              icon="whatsapp"
-              href={WHATSAPP_URL}
-              className="w-full justify-center sm:w-auto"
-            >
-              {t.hero.beratung}
-            </Button>
-          </div>
+          {/* Кнопки на десктопі — після слайдера */}
+          <div className="hidden lg:block">{ctaButtons}</div>
         </div>
 
         {/* Соцмережі */}

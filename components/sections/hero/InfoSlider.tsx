@@ -5,6 +5,8 @@ import { AnimatedCounter } from "@/components/sections/hero/AnimatedCounter";
 import { Icon } from "@/components/ui/Icon";
 import { type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import type { ReactNode } from "react";
+
 
 const SLIDES = 3;
 const AUTOPLAY_MS = 6000;
@@ -14,7 +16,9 @@ const AUTOPLAY_MS = 6000;
 interface InfoSliderProps {
   locale: Locale;
   revealed: boolean;
+  cta?: ReactNode;
 }
+
 
 function CheckCircleMono({ className }: { className?: string }) {
   return (
@@ -40,7 +44,7 @@ function MarkMono({ className }: { className?: string }) {
   );
 }
 
-export function InfoSlider({ locale, revealed }: InfoSliderProps) {
+export function InfoSlider({ locale, revealed, cta }: InfoSliderProps) {
   const [active, setActive] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const t = getDictionary(locale);
@@ -91,11 +95,14 @@ export function InfoSlider({ locale, revealed }: InfoSliderProps) {
             </p>
           </div>
         </div>
+        
+         {/* CTA-кнопки на мобільних: одразу після заголовка */}
+        {cta && <div className="lg:hidden">{cta}</div>}
 
         {/* Слайд 2: статистика + партнер */}
         <div className={slideClass(1)}>
           <div className="flex flex-col items-center gap-40 lg:items-start lg:gap-56">
-            <div className="flex flex-wrap items-center justify-center gap-32 lg:justify-start lg:gap-80">
+            <div className="flex flex-wrap items-center justify-center gap-16 lg:justify-start lg:gap-80">
               {t.hero.stats.map((s, idx) => {
                 const raw = s.value.replace(/\s/g, "");
                 const match = raw.match(/^(\d+)(\+?)$/);
@@ -108,7 +115,7 @@ export function InfoSlider({ locale, revealed }: InfoSliderProps) {
                     className={`flex flex-col items-center gap-8 text-center lg:items-start lg:text-left ${itemClass(1)}`}
                     style={delayStyle(1, idx * 120)}
                   >
-                    <span className="text-h3">
+                    <span className="text-h4 lg:text-h3">
                       <AnimatedCounter
                         target={isMobile ? num : active === 1 ? num : 0}
                         suffix={suffix}
@@ -124,7 +131,7 @@ export function InfoSlider({ locale, revealed }: InfoSliderProps) {
               })}
             </div>
             <span
-              className={`text-h4 uppercase ${itemClass(1)}`}
+              className={`text-title-m uppercase lg:text-h4 ${itemClass(1)}`}
               style={delayStyle(1, 360)}
             >
               {t.hero.partner}
@@ -136,7 +143,7 @@ export function InfoSlider({ locale, revealed }: InfoSliderProps) {
         <div className={slideClass(2)}>
           <div className="flex flex-col gap-40">
             <h2
-              className={`text-h3 md:text-h1-md lg:text-h3 ${itemClass(2)}`}
+              className={`text-h5 lg:text-h3 ${itemClass(2)}`}
               style={delayStyle(2, 0)}
             >
               {t.hero.startTitle}
