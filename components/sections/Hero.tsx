@@ -36,16 +36,26 @@ export function Hero({ locale }: { locale: Locale }) {
       >
         {/* Топбар */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-16">
-            <IconButton
-              icon="menu"
-              label={t.menu.open}
-              onClick={() => setMenuOpen(true)}
-            />
-            <span className="text-subtitle text-secondary">{t.menu.label}</span>
-          </div>
-          <LanguageToggle locale={locale} />
-        </div>
+  <div className="flex items-center gap-16">
+    <IconButton
+      icon="menu"
+      label={t.menu.open}
+      onClick={() => setMenuOpen(true)}
+    />
+    <span className="text-subtitle text-secondary">{t.menu.label}</span>
+  </div>
+
+  <div className="flex items-center gap-16">
+    <LanguageToggle locale={locale} />
+    <IconButton
+      icon="whatsapp"
+      label="WhatsApp"
+      variant="primary"
+      href={WHATSAPP_URL}
+      className="lg:hidden"
+    />
+  </div>
+</div>
 
         {/* Центр */}
         <div className="flex flex-col items-center gap-40 text-center lg:items-start lg:gap-56 lg:text-left">

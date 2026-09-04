@@ -30,7 +30,7 @@ export function LanguageToggle({ locale, variant = "light" }: LanguageToggleProp
 
   return (
     <div className="flex items-center gap-16">
-      <span className={`text-subtitle ${labelColor}`}>{t.language.label}</span>
+      <span className={`hidden text-subtitle sm:block ${labelColor}`}>{t.language.label}</span>
       <button
         type="button"
         aria-label={t.language.switch}
