@@ -225,6 +225,14 @@
     mask-size: contain;
   }
 
+    .icon-arrow-up {
+    -webkit-mask-image: url("/icons/uparrow-icon.svg");
+    mask-image: url("/icons/uparrow-icon.svg");
+  }
+  .icon-arrow-down {
+    -webkit-mask-image: url("/icons/downarrow-icon.svg");
+    mask-image: url("/icons/downarrow-icon.svg");
+  }
   .icon-download {
     -webkit-mask-image: url("/icons/download-icon.svg");
     mask-image: url("/icons/download-icon.svg");

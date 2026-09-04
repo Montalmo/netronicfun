@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
 import { Eyebrow } from "@/components/sections/hero/Eyebrow";
 import { HeroSlider } from "@/components/sections/hero/HeroSlider";
+import { InfoSlider } from "@/components/sections/hero/InfoSlider";
 import { Button } from "@/components/ui/Button";
 import { IconButton } from "@/components/ui/IconButton";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
@@ -12,7 +13,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 
 const INSTAGRAM_URL = "https://www.instagram.com/lasertagnetronicfun";
 const WHATSAPP_URL = "https://wa.me/491778522174";
-const CATALOG_URL = "/downloads/netronic-katalog-2026.pdf";
+const CATALOG_URL = "/downloads/netronic-catalog-de-2026.pdf";
 
 export function Hero({ locale }: { locale: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +28,7 @@ export function Hero({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative w-full lg:flex lg:h-dvh">
+      {/* Ліва колонка */}
       <div className="flex flex-col gap-40 px-16 pb-16 pt-104 sm:px-32 sm:pb-32 sm:pt-136 md:px-40 md:pb-40 md:pt-152 lg:h-full lg:w-1/2 lg:justify-between lg:gap-0 lg:px-80 lg:pb-80 lg:pt-80 3xl:px-160">
         {/* Хедер: фіксований з blur на <lg, статичний на lg+ */}
         <header className="fixed inset-x-0 top-0 z-40 bg-surface/80 backdrop-blur-md lg:static lg:z-auto lg:bg-transparent lg:backdrop-blur-none">
@@ -52,30 +54,11 @@ export function Hero({ locale }: { locale: Locale }) {
           </div>
         </header>
 
-        {/* Центр */}
+        {/* Центр: eyebrow + інфо-слайдер + CTA */}
         <div className="flex flex-col items-center gap-40 text-center lg:items-start lg:gap-56 lg:text-left">
           <Eyebrow locale={locale} />
 
-          <div className="flex flex-col items-center gap-24 lg:items-start">
-            <h1
-              className={`text-h1-sm md:text-h1-md lg:text-h1 ${
-                revealed ? "animate-fade-up" : "opacity-0"
-              }`}
-              style={{ animationDelay: "100ms" }}
-            >
-              {t.hero.titleLine1}
-              <br />
-              {t.hero.titleLine2}
-            </h1>
-            <p
-              className={`text-body text-secondary md:text-title-m lg:text-title-l ${
-                revealed ? "animate-fade-up" : "opacity-0"
-              }`}
-              style={{ animationDelay: "250ms" }}
-            >
-              {t.hero.subtitle}
-            </p>
-          </div>
+          <InfoSlider locale={locale} revealed={revealed} />
 
           <div className="flex w-full flex-col items-stretch gap-16 sm:w-auto sm:flex-row sm:items-center">
             <Button
@@ -109,12 +92,17 @@ export function Hero({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      {/* Слайдер */}
+      {/* Права колонка: слайдер зображень */}
       <div className="lg:h-full lg:w-1/2">
         <HeroSlider locale={locale} />
       </div>
 
-      <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} locale={locale} />
+      {/* Повноекранне меню */}
+      <MenuOverlay
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        locale={locale}
+      />
     </section>
   );
 }

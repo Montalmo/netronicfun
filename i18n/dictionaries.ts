@@ -34,6 +34,27 @@ const de = {
     contact: "Kontaktieren Sie uns",
     slideAlt: "Lasertag-Ausrüstung von Netronic",
     slideLabel: "Bild",
+    stats: [
+  { value: "2 000 +", label: "Lasertag-Center weltweit" },
+  { value: "15", label: "Jahre Erfahrung" },
+  { value: "80 +", label: "Länder" },
+],
+partner: "Offizieller Partner von Netronic",
+startTitle: "Sie wollen einen Lasertag-Business starten?",
+problemsTitle: "Probleme",
+solutionsTitle: "Lösungen",
+problems: [
+  "Hohe Investition, unklare Rendite",
+  "Komplexe Technik, lange Einarbeitung",
+  "Keine Ahnung von Marketing",
+],
+solutions: [
+  "Klarer Businessplan mit 9–18 Monaten ROI",
+  "Plug & Play — Setup in 10 Minuten",
+  "Fertige Marketing-Kits inklusive",
+],
+sliderPrev: "Vorheriger Slide",
+sliderNext: "Nächster Slide",
   },
 };
 
@@ -71,6 +92,27 @@ const en: typeof de = {
     contact: "Contact us",
     slideAlt: "Lasertag equipment by Netronic",
     slideLabel: "Image",
+    stats: [
+  { value: "2,000+", label: "Lasertag centers worldwide" },
+  { value: "15", label: "Years of experience" },
+  { value: "80+", label: "Countries" },
+],
+partner: "Official partner of Netronic",
+startTitle: "Want to start a lasertag business?",
+problemsTitle: "Problems",
+solutionsTitle: "Solutions",
+problems: [
+  "High investment, unclear returns",
+  "Complex tech, long onboarding",
+  "No clue about marketing",
+],
+solutions: [
+  "Clear business plan with 9–18 month ROI",
+  "Plug & play — setup in 10 minutes",
+  "Ready-made marketing kits included",
+],
+sliderPrev: "Previous slide",
+sliderNext: "Next slide",
   },
 };
 

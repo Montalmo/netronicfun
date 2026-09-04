@@ -4,6 +4,8 @@ const ICONS = {
   instagram: "icon-instagram",
   menu: "icon-menu",
   whatsapp: "icon-whatsapp",
+  "arrow-up": "icon-arrow-up",
+  "arrow-down": "icon-arrow-down",
 } as const;
 
 export type IconName = keyof typeof ICONS;
